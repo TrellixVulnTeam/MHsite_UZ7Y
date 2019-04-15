@@ -1,0 +1,22 @@
+{% extends 'catalog/navbar.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<h1 class='display-3 text-muted'>{{user.username}}</h1>
+
+<h1 class='display-4'> Encomedas feitas: </h1>
+{% for o in order %}
+	{% if o.is_ordered == True and o.total > 0 %}
+		<span class='text-muted h5'> ID da encomenda: </span> <span> {{o.order_id}} </span> <br>
+		<span class='text-muted h5'> Referência: </span> <span> {{o.items}} </span> <br>
+		<span class='text-muted h5'> Preço: </span> <span> {{o.total}} €</span> <br> 
+		<span class='text-muted h5'> Data do pedido: </span> <span> {{o.timestamp}} </span> <br>
+		<span class='text-muted h5'> Pagamento feito por: </span> <span> {{o.ordered_through}} </span> <br>
+		<a href="{% url 'profile_orders' slug=o.slug %}"> Ver Detalhes </a>
+		<br>
+	{% endif%}
+{% endfor %}
+
+{% endblock content%}

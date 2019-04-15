@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% extends 'catalog/navbar.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}	
+<div class='container-fluid'>
+<!--<div class='row'>
+	
+</div>-->
+<div class='row'>
+	<div class='col-3 mr-5 ml-0 bg-light border-right'>
+		<h3 class='text-muted font-weight-light mt-3'> Já sabe o que quer? Encontre o que procura utilizando estes campos: </h3>
+		<br>
+		<form method='GET'>
+		{{filter.form|crispy}}
+			<button class='btn btn-lg float-right m-3'> Procurar
+			</button>
+ 		</form>
+ 			
+		</form>
+
+
+	</div>
+	<div class='col-lg-8 col-sm-7 mt-5 ml-4 bg-white border border-warning'>
+		<h1 class='display-4 bg-white' style="margin-top: -0.7em!important;"> Catálogo</h1>
+		<div class='row m-4'>		
+		{% for object in filter.qs%}
+			
+		<div class='card p-lg-3 m-lg-3 m-sm-4 p-sm-4 border-0'  id='catalog_cards'>	
+			<img style='width:200px!important; height:200px!important;' src="{{ object.image.url }}">	
+			</img>
+			<hr>
+			<span class='text-muted'> Preço: {{object.price}} € <br> </span>
+					
+			<span class='text-muted'> REF: {{object.reference}} <br> </span>
+				
+			<span class='text-muted'> Marca: {{object.type_fornecedor}} <br> </span>
+					
+			<a href='{% url "detail" object.id %}' target='_blank' class='card-footer text-muted outline-warning text-center'>
+				Ver detalhes
+			</a>
+			</div> 
+		
+		{%endfor%}
+		</div>
+<!--		{% if is_paginated %}
+			
+			{% if page_obj.has_previous %}
+				<a class='btn btn-outline btn-warning mb-4' href="?page=1">1ª Página</a>
+				<a class='btn btn-outline btn-warning mb-4' href="?page={{ page_obj.previous_page_number }}">Página Anterior</a>
+			{% endif %}
+
+			{% for num in page_obj.paginator.page_range %}
+				{% if page_obj.number == num %}
+					<a class='btn btn-warning mb-4' href="?page={{num}}">{{ num }}</a>
+				{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+					<a class='btn btn.outline btn-warning mb-4' href="?page={{num}}">{{ num }}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+				<a class='btn btn-outline btn-warning mb-4' href="?page={{ page_obj.next_page_number }}">Próxima</a>
+				<a class='btn btn-outline btn-warning mb-4' href="?page={{ page_obj.paginator.num_pages }}"> última Página</a>
+			{% endif %}
+
+		{% endif %}
+-->
+<!--	</div>		
+		<div class='col-1 h5 font-weight-normal text-decoration-none' id="page-list">
+
+				{% if is_paginated %}
+				<h1>Páginas:</h1>
+				<ul class='pagination pagination-lg btn-group-vertical mr-2 ml-5 p-3 bg-secondary border float-center text-white'>
+					{% if page_obj.has_previous %}
+					
+					<li> <a href="?page={{ page_obj.previous_page_number }}" class='text-white p-2' > - </a></li>
+					{% else %}
+					<li class='disabled text-whited p-2'> <span> - </span></li>
+					
+					{% endif %}
+					<hr>
+					{% for i in paginator.page_range %}
+						{% if page_obj.number == i %}
+							<li class='active text-warning p-2'> <span> {{ i }}. <span class='sr-only'>(current)</span></span></li>
+						{% else %}
+							<li><a href="?page={{ i }}" class='text-white p-2' > {{ i }}. </a> </li>
+						{% endif %}
+					{% endfor %}
+					<hr>
+					{% if page_obj.has_next %}
+
+						<li> <a href="?page={{ page_obj.next_page_number }}" class='text-white p-2' > + </a></li>
+					{% else %}
+						<li class='disabled p-2'><span> + </span></li>
+					{% endif %}
+
+				</ul>
+				{% endif %}
+				</ul>
+		</div>
+	</div>-->
+
+</div>
+	
+
+			
+	
+{% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+{% extends 'catalog/base.html' %}	
+{% load static %}
+
+{% block content %}
+<span class='row  '>
+	
+	<span class='col-12 text-center' style='margin-top:10em!important;' id='logo'>
+		<h1> Maria Helena - Ouro & Prata </h1> 
+	</span>
+</span>
+
+<span class='container container-fluid' id='container_id'>
+	<span class='row text-center' id='row_enter' style='margin-top:2em!important;'>
+
+			<span class='col-12 text-center'>
+			
+				<span class='col-2 mr-4'>
+					<figure class='figure'>
+						<a href='{% url "home" %}'><img src="{% static 'catalog/img/home.png'%}" heigth='150' width='150' class='img-fluid'> 
+						<figcaption class='figure-caption'>Home</figcaption>	 
+						</a>
+					</figure>
+				
+				<figure class='figure'>
+					<a href='{% url "catalog" %}'><img src="{% static 'catalog/img/catalog.png'%}" heigth='150' width='150' class='d-inline-block'> 
+						<figcaption class='figure-caption'>Catálogo</figcaption>
+					</a>
+				</figure>
+			
+				<figure class='figure'>
+					<a href='{% url "login" %}'><img src="{% static 'catalog/img/user.png'%}" heigth='150' width='150' class='d-inline'> <figcaption class='figure-caption'> Login/Registro </figcaption>
+					</a>
+				</figure>
+
+			</span>
+	</span>	
+</span>
+	
+
+{% endblock content %}
+
+
+
+
+
+</body>
+</html>

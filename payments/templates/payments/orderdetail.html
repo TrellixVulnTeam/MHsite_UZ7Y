@@ -1,0 +1,36 @@
+{% extends "catalog/navbar.html" %}
+
+{% block content %}
+
+{{order.nome_completo}}
+
+{{order.morada}}
+
+{{order.codigo_postal_1}}
+
+{{order.codigo_postal_2}}
+
+{{order.cart}}
+
+<form action='{% url "order_finish" order.slug %}' method='post'>	
+<!--form -->
+	{% csrf_token %}
+	<input id="Order_is_ordered" type="hidden" name="ordered" value="True">
+	<input type="submit" name='Online' value="Encomendar Online">
+</form>
+
+{% include "payments/order_ctt.html" %}
+
+
+
+<a href="{% url 'CTT_order_edit' order.slug %}">Editar informação</a>
+
+{% endblock content %}
+</body>
+</html>
+
+<!--
+v
+<a href="{% url 'order_final' order.slug %}" class='btn btn-warning'> Confirmar </a>
+
+-->
